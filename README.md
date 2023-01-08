@@ -1,2 +1,2 @@
-# loto_analyzer
-
+# scraping_loto
+Scraping loto’s result
