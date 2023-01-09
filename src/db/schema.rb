@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_09_071918) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_09_080020) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "loto_numbers", force: :cascade do |t|
+    t.bigint "loto_id", comment: "ロトID"
+    t.boolean "is_bonus", null: false, comment: "ボーナス数字"
+    t.integer "number", null: false, comment: "数字"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["loto_id", "number"], name: "index_loto_numbers_on_loto_id_and_number", unique: true
+    t.index ["loto_id"], name: "index_loto_numbers_on_loto_id"
+  end
 
   create_table "loto_prizes", force: :cascade do |t|
     t.bigint "loto_id", comment: "ロトID"
