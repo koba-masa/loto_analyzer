@@ -33,6 +33,13 @@ services:
     ports:
       - 5432:5432
 
+  selenium_server:
+    image: selenium/standalone-chrome
+    ports:
+      - 4444:4444
+      - 7900:7900
+    shm_size: "2gb"
+
 volumes:
   app_bundle:
     external: false
