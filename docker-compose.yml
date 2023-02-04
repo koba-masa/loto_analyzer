@@ -40,6 +40,15 @@ services:
       - 7900:7900
     shm_size: "2gb"
 
+  web:
+    build:
+      context: .
+      dockerfile: ./docker_files/nginx
+    volumes:
+      - ./src/spec/fixtures/html:/usr/share/nginx/html
+    ports:
+      - 8080:80
+
 volumes:
   app_bundle:
     external: false
