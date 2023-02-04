@@ -33,6 +33,15 @@ services:
     ports:
       - 5432:5432
 
+  web:
+    build:
+      context: .
+      dockerfile: ./docker_files/nginx
+    volumes:
+      - ./src/spec/fixtures/html:/usr/share/nginx/html
+    ports:
+      - 8080:80
+
 volumes:
   app_bundle:
     external: false
