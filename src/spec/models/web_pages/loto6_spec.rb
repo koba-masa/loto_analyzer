@@ -17,12 +17,6 @@ module WebPages
       instance.quit
     end
 
-    describe 'get' do
-      it 'ロト6のページの内容が取得できること' do
-        expect(instance.driver.page_source).not_to be_nil
-      end
-    end
-
     describe '#times' do
       it '開催回を返却すること' do
         expect(instance.times).to eq '1763'

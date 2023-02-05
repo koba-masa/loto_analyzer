@@ -22,7 +22,7 @@ class WebPage
       @driver = Selenium::WebDriver.for(
         :remote,
         url: 'http://selenium_server:4444',
-        desired_capabilities: :chrome,
+        capabilities: [options],
         http_client: client,
       )
     end
@@ -33,9 +33,7 @@ class WebPage
   def options
     return @options if @options.present?
 
-    @options = Selenium::WebDriver::Chrome::Options.new
-    @options.add_argument('--headless')
-
+    @options = Selenium::WebDriver::Options.chrome
     @options
   end
 
