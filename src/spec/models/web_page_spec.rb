@@ -3,5 +3,21 @@
 require 'rails_helper'
 
 RSpec.describe WebPage do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:instance) { described_class.new }
+  let(:url) { 'http://web:80/loto6/index.html' }
+
+  before do
+    instance.get(url)
+  end
+
+  after do
+    instance.close
+    instance.quit
+  end
+
+  describe 'get' do
+    it 'ロト6のページの内容が取得できること' do
+      expect(instance.driver.page_source).not_to be_nil
+    end
+  end
 end
