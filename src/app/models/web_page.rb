@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class WebPage
   def user_agent
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36' # rubocop:disable Layout/LineLength
   end
 
   def sleep
@@ -13,14 +15,15 @@ class WebPage
 
   def driver
     return @driver if @driver.present?
-    unless Rails.env.produciton?
+
+    unless Rails.env.production?
       client = Selenium::WebDriver::Remote::Http::Default.new
       client.read_timeout = 180
       @driver = Selenium::WebDriver.for(
         :remote,
-        :url => 'http://selenium_server:4444',
+        url: 'http://selenium_server:4444',
         desired_capabilities: :chrome,
-        http_client: client
+        http_client: client,
       )
     end
     @driver.manage.timeouts.implicit_wait = 10
@@ -29,17 +32,14 @@ class WebPage
 
   def options
     return @options if @options.present?
+
     @options = Selenium::WebDriver::Chrome::Options.new
     @options.add_argument('--headless')
 
     @options
   end
 
-  def close
-    driver.close
-  end
+  delegate :close, to: :driver
 
-  def quit
-    driver.quit
-  end
+  delegate :quit, to: :driver
 end

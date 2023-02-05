@@ -1,11 +1,12 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 
 module WebPages
-  RSpec.describe Loto6, type: :model do
+  RSpec.describe Loto6 do
     let(:instance) { described_class.new }
     let(:url) { 'http://web:80/loto6/index.html' }
-    let(:expected_numbers) { ['02', '06', '20', '30', '31', '41'] }
+    let(:expected_numbers) { %w[02 06 20 30 31 41] }
 
     before do
       instance.get(url)
@@ -18,7 +19,7 @@ module WebPages
 
     describe 'get' do
       it 'ロト6のページの内容が取得できること' do
-        expect(instance.driver.page_source).not_to eq nil
+        expect(instance.driver.page_source).not_to be_nil
       end
     end
 
