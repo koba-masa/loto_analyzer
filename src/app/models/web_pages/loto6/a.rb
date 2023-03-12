@@ -11,6 +11,10 @@ module WebPages
         get(url)
       end
 
+      def results_count
+        @results_count ||= driver.find_elements(:css, TABLE_CSS_SELECTOR).size
+      end
+
       def times
         times = driver.find_element(:css, "#{THEAD_CSS_SELECTOR} tr th:nth-child(2)").text
         match(times, '第([0-9]{1,})回')
