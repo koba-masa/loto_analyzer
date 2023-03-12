@@ -5,17 +5,19 @@ require 'rails_helper'
 module WebPages
   module Loto6
     RSpec.describe A do
-      let(:instance) { described_class.new }
-      let(:url) { 'http://web:80/loto6/index.html' }
+      let(:instance) { described_class.new(url) }
+      let(:url) { 'http://web/loto6/index.html' }
       let(:expected_numbers) { %w[02 06 20 30 31 41] }
-
-      before do
-        instance.get(url)
-      end
 
       after do
         instance.close
         instance.quit
+      end
+
+      describe '#initialize' do
+        it 'インスタンス生成時にページの移動が完了していること' do
+          expect(instance.driver.current_url).to eq url
+        end
       end
 
       describe '#times' do

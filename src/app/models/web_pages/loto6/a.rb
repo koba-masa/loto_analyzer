@@ -7,8 +7,8 @@ module WebPages
       THEAD_CSS_SELECTOR = "#{TABLE_CSS_SELECTOR} thead".freeze
       TBODY_CSS_SELECTOR = "#{TABLE_CSS_SELECTOR} tbody".freeze
 
-      def url
-        'https://www.mizuhobank.co.jp/retail/takarakuji/check/loto/loto6/index.html'
+      def initialize(url)
+        get(url)
       end
 
       def times
