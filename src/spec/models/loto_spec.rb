@@ -6,27 +6,27 @@ RSpec.describe Loto do
   describe 'バリデーション' do
     let(:loto) { build(:loto) }
 
-    describe '#type' do
+    describe '#kind' do
       context '設定されている場合' do
         it 'trueが返却されること' do
           expect(loto).to be_valid
-          loto.type = described_class.types[:loto7]
+          loto.kind = described_class.kinds[:loto7]
           expect(loto).to be_valid
-          loto.type = described_class.types[:mini_loto]
+          loto.kind = described_class.kinds[:mini_loto]
           expect(loto).to be_valid
         end
       end
 
       context '設定されていない場合' do
         it 'falseが返却されること' do
-          loto.type = nil
+          loto.kind = nil
           expect(loto).to be_invalid
         end
       end
 
       context '未定義の値の場合' do
         it 'falseが返却されること' do
-          loto.type = 0
+          loto.kind = 0
           expect(loto).to be_invalid
         end
       end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_09_080020) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_26_130239) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,13 +35,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_080020) do
   end
 
   create_table "lotos", force: :cascade do |t|
-    t.integer "type", null: false, comment: "種別"
+    t.integer "kind", null: false, comment: "種別"
     t.integer "times", null: false, comment: "開催回"
     t.date "lottery_date", null: false, comment: "抽選日"
     t.integer "sales_amount", comment: "販売実績額"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["type", "times"], name: "index_lotos_on_type_and_times", unique: true
+    t.index ["kind", "times"], name: "index_lotos_on_kind_and_times", unique: true
   end
 
 end
