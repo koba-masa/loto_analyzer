@@ -7,20 +7,20 @@ module WebPages
       ROW_CSS_SELECTOR = "#{TABLE_CSS_SELECTOR} tbody tr".freeze
 
       def initialize(url)
+        super
         get(url)
       end
 
       def parse
-        results = []
         row_source.map do |row|
           loto = Loto.new(kind: :loto6, times: times(row), lottery_date: lottery_date(row))
-          numbers = numbers(row).map { |number| LotoNumber.new(loto: loto, is_bonus: false, number: number) }
-          numbers.push(LotoNumber.new(loto: loto, is_bonus: true, number: bounus_number(row)))
+          numbers = numbers(row).map { |number| LotoNumber.new(loto:, is_bonus: false, number:) }
+          numbers.push(LotoNumber.new(loto:, is_bonus: true, number: bounus_number(row)))
           Result.new(loto, numbers, nil)
         end
       ensure
-        close()
-        quit()
+        close
+        quit
       end
 
       private
@@ -41,7 +41,7 @@ module WebPages
 
       def numbers(row)
         source = parse_by_css_selector(row.to_s, 'tr :nth-child(n+3):nth-child(-n+8)')
-        source.map { |number| number.inner_text }
+        source.map(&:inner_text)
       end
 
       def bounus_number(row)

@@ -12,8 +12,8 @@ module WebPages
       describe '#initialize' do
         it 'インスタンス生成時にページの移動が完了していること' do
           expect(instance.driver.current_url).to eq url
-          instance.close()
-          instance.quit()
+          instance.close
+          instance.quit
         end
       end
 

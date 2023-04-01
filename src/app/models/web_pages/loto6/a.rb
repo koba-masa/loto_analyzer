@@ -8,14 +8,15 @@ module WebPages
       TBODY_CSS_SELECTOR = "#{TABLE_CSS_SELECTOR} tbody".freeze
 
       def initialize(url)
+        super
         get(url)
       end
 
       def parse
         (0..(results_count - 1)).map do |i|
           loto = Loto.new(kind: :loto6, times: times(i), lottery_date: lottery_date(i))
-          numbers = numbers(i).map { |number| LotoNumber.new(loto: loto, is_bonus: false, number: number) }
-          numbers.push(LotoNumber.new(loto: loto, is_bonus: true, number: bounus_number(i)))
+          numbers = numbers(i).map { |number| LotoNumber.new(loto:, is_bonus: false, number:) }
+          numbers.push(LotoNumber.new(loto:, is_bonus: true, number: bounus_number(i)))
           prizes = []
           Result.new(loto, numbers, prizes)
         end
@@ -23,7 +24,7 @@ module WebPages
 
       def results_count
         @results_count ||= driver.find_elements(:css, TABLE_CSS_SELECTOR).size
-        return @results_count
+        @results_count
       end
 
       def times(index)
@@ -44,7 +45,7 @@ module WebPages
 
       def numbers(index)
         @numberses ||= driver.find_elements(:css, "#{TBODY_CSS_SELECTOR} tr:nth-child(2) td strong")
-        start_index = 6 * index
+        start_index = index * 6
         end_index = (start_index + 6) - 1
         (start_index..end_index).map { |i| @numberses[i].text }
       end
