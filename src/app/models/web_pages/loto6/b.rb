@@ -14,10 +14,9 @@ module WebPages
         results = []
         row_source.map do |row|
           loto = Loto.new(kind: :loto6, times: times(row), lottery_date: lottery_date(row))
-          prizes = []
-          Result.new(loto, numbers, prizes)
           numbers = numbers(row).map { |number| LotoNumber.new(loto: loto, is_bonus: false, number: number) }
           numbers.push(LotoNumber.new(loto: loto, is_bonus: true, number: bounus_number(row)))
+          Result.new(loto, numbers, nil)
         end
       ensure
         close()
