@@ -37,6 +37,11 @@ class WebPage
     @options
   end
 
+  def parse_by_css_selector(sourse, css_selector)
+    documents = Nokogiri::HTML.parse(sourse)
+    documents.css(css_selector)
+  end
+
   delegate :close, to: :driver
 
   delegate :quit, to: :driver
