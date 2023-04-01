@@ -23,6 +23,8 @@ module WebPages
         quit()
       end
 
+      private
+
       def times(row)
         source = parse_by_css_selector(row.to_s, 'tr th')
         match(source.inner_text, '第([0-9]{1,})回')
@@ -46,8 +48,6 @@ module WebPages
         source = parse_by_css_selector(row.to_s, 'tr :nth-child(9)')
         source.inner_text
       end
-
-      private
 
       def match(target, pattern)
         m = Regexp.new(pattern).match(target)
