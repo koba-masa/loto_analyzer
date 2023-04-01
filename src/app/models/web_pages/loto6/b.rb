@@ -7,7 +7,7 @@ module WebPages
       ROW_CSS_SELECTOR = "#{TABLE_CSS_SELECTOR} tbody tr".freeze
 
       def initialize(url)
-        super
+        super()
         get(url)
       end
 

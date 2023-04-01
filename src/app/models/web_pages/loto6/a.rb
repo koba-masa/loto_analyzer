@@ -8,7 +8,7 @@ module WebPages
       TBODY_CSS_SELECTOR = "#{TABLE_CSS_SELECTOR} tbody".freeze
 
       def initialize(url)
-        super
+        super()
         get(url)
       end
 
@@ -20,6 +20,9 @@ module WebPages
           prizes = []
           Result.new(loto, numbers, prizes)
         end
+      ensure
+        close
+        quit
       end
 
       def results_count
