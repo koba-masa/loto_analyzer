@@ -20,6 +20,9 @@ module WebPages
           prizes = []
           Result.new(loto, numbers, prizes)
         end
+      ensure
+        close
+        quit
       end
 
       def results_count

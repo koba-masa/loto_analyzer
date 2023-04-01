@@ -23,8 +23,6 @@ module WebPages
         context '対象のテーブルが存在する場合' do
           it 'Resultクラスの配列が返却されること' do
             expect(instance_single.parse[0].class).to eq Result
-            instance_single.close
-            instance_single.quit
           end
         end
       end
