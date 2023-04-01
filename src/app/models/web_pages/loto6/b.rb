@@ -14,9 +14,10 @@ module WebPages
         results = []
         row_source.map do |row|
           loto = Loto.new(kind: :loto6, times: times(row), lottery_date: lottery_date(row))
-          numbers = []
           prizes = []
           Result.new(loto, numbers, prizes)
+          numbers = numbers(row).map { |number| LotoNumber.new(loto: loto, is_bonus: false, number: number) }
+          numbers.push(LotoNumber.new(loto: loto, is_bonus: true, number: bounus_number(row)))
         end
       ensure
         close()
@@ -38,9 +39,13 @@ module WebPages
       end
 
       def numbers(row)
+        source = parse_by_css_selector(row.to_s, 'tr :nth-child(n+3):nth-child(-n+8)')
+        source.map { |number| number.inner_text }
       end
 
       def bounus_number(row)
+        source = parse_by_css_selector(row.to_s, 'tr :nth-child(9)')
+        source.inner_text
       end
 
       private
