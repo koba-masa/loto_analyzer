@@ -23,6 +23,7 @@ module WebPages
             result = instance.parse[0]
             expect(result.class).to eq Result
             expect(result.loto.times).to eq 1
+            expect(result.loto.lottery_date).to eq Date.new(2000, 10, 5)
           end
         end
       end
