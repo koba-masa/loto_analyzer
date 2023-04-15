@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe WebPage, type: :scraping do
   let(:instance) { described_class.new }
-  let(:url) { "http://#{ENV.fetch('TEST_WEB_SERVER', nil)}/loto6/index.html" }
+  let(:url) { "http://#{ENV.fetch('TEST_WEB_SERVER', nil)}/loto/loto6/index.html" }
 
   before do
     instance.get(url)
