@@ -18,8 +18,10 @@ module WebPages
     describe '#parse' do
       it 'ロト6のバックナンバーが格納されていること' do
         instance.parse
-        expect(instance.loto6).to include(
+        expect(instance.loto6_a).to include(
           "http://#{ENV.fetch('TEST_WEB_SERVER', nil)}/retail/takarakuji/check/loto/loto6/index.html?year=2023&month=1",
+        )
+        expect(instance.loto6_b).to include(
           "http://#{ENV.fetch('TEST_WEB_SERVER', nil)}/loto6/backnumber/loto60081.html",
         )
       end

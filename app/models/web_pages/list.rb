@@ -2,7 +2,7 @@
 
 module WebPages
   class List < WebPage
-    attr_reader :loto6
+    attr_reader :loto6_a, :loto6_b
 
     TABLE_TYPE_A_CSS_SELECTOR = 'table.typeTK:not(.js-backnumber-b)'
     TABLE_TYPE_B_CSS_SELECTOR = 'table.typeTK.js-backnumber-b'
@@ -10,13 +10,11 @@ module WebPages
     def initialize(url)
       super()
       get(url)
-
-      @loto6 = []
     end
 
     def parse
-      @loto6.concat(get_link(TABLE_TYPE_A_CSS_SELECTOR, 3))
-      @loto6.concat(get_link(TABLE_TYPE_B_CSS_SELECTOR, 2))
+      @loto6_a = get_link(TABLE_TYPE_A_CSS_SELECTOR, 3)
+      @loto6_b = get_link(TABLE_TYPE_B_CSS_SELECTOR, 2)
     ensure
       close
       quit
