@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe WebPage do
   let(:instance) { described_class.new }
-  let(:url) { 'http://web:80/loto6/index.html' }
+  let(:url) { "http://#{ENV.fetch('TEST_WEB_SERVER', nil)}/loto6/index.html" }
 
   before do
     instance.get(url)

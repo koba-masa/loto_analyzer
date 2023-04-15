@@ -7,8 +7,8 @@ module WebPages
     RSpec.describe A do
       let(:instance_single) { described_class.new(url_single) }
       let(:instance_multiple) { described_class.new(url_multiple) }
-      let(:url_single) { 'http://web/loto6/index_single.html' }
-      let(:url_multiple) { 'http://web/loto6/index_multiple.html' }
+      let(:url_single) { "http://#{ENV.fetch('TEST_WEB_SERVER', nil)}/loto6/index_single.html" }
+      let(:url_multiple) { "http://#{ENV.fetch('TEST_WEB_SERVER', nil)}/loto6/index_multiple.html" }
       let(:expected_numbers) { %w[02 06 20 30 31 41] }
 
       describe '#initialize' do

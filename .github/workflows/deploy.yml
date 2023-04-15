@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: deploy
+      - name: Deploy
         run: |
           ssh_identifier="identifier"
           echo "${{ secrets.DEPLOY_SERVER_IDENTIFIER }}" > ${ssh_identifier}
