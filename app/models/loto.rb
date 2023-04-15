@@ -4,7 +4,7 @@ class Loto < ApplicationRecord
   has_many :loto_prizes, dependent: :destroy
   has_many :loto_numbers, dependent: :destroy
 
-  enum :kinds, { loto6: 1, loto7: 2, mini_loto: 3 }
+  enum :kinds, { loto6: 6, loto7: 7, mini_loto: 5 }
 
   validates :kind, presence: true, inclusion: { in: Loto.kinds.values }, uniqueness: { scope: [:times] }
   validates :times, presence: true
