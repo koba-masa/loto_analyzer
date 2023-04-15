@@ -1,0 +1,4 @@
+loto:
+  loto6:
+    latest: http://<%= ENV.fetch('TEST_WEB_SERVER', nil) %>/loto/loto6/index_multiple.html
+    back_number: "http://<%= ENV.fetch('TEST_WEB_SERVER', nil) %>/loto/backnumber/index.html"
