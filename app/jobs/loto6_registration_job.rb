@@ -16,7 +16,7 @@ class Loto6RegistrationJob < ApplicationJob
       a_urls.map do |url|
         WebPages::Loto6::A.new(url).parse
       rescue StandardError => e
-        logger.eeror e.message.to_s
+        logger.error e.message.to_s
         logger.info e.backtrace.join("\n").to_s
       end.flatten,
     )
@@ -26,7 +26,7 @@ class Loto6RegistrationJob < ApplicationJob
       b_urls.map do |url|
         WebPages::Loto6::B.new(url).parse
       rescue StandardError => e
-        logger.eeror e.message.to_s
+        logger.error e.message.to_s
         logger.info e.backtrace.join("\n").to_s
       end.flatten,
     )

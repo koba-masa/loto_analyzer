@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Loto6RegistrationJob do
+RSpec.describe Loto6RegistrationJob, type: :scraping do
   let(:instance) { described_class.new }
 
   describe 'perform' do
