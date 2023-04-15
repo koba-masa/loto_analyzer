@@ -22,7 +22,10 @@ module WebPages
       describe '#parse' do
         context '対象のテーブルが存在する場合' do
           it 'Resultクラスの配列が返却されること' do
-            expect(instance_single.parse[0].class).to eq Result
+            result = instance_single.parse[0]
+            expect(result.class).to eq Result
+            loto = result.loto
+            expect(loto.kind).to eq Loto.kinds[:loto6]
           end
         end
       end

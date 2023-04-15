@@ -22,6 +22,7 @@ module WebPages
           it 'Resultクラスの配列が返却されること' do
             result = instance.parse[0]
             expect(result.class).to eq Result
+            expect(result.loto.kind).to eq Loto.kinds[:loto6]
             expect(result.loto.times).to eq 1
             expect(result.loto.lottery_date).to eq Date.new(2000, 10, 5)
             expect(result.numbers.map(&:number)).to match_array(expected_numbers)

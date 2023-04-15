@@ -13,7 +13,7 @@ module WebPages
 
       def parse
         row_source.map do |row|
-          loto = Loto.new(kind: :loto6, times: times(row), lottery_date: lottery_date(row))
+          loto = Loto.new(kind: Loto.kinds[:loto6], times: times(row), lottery_date: lottery_date(row))
           numbers = numbers(row).map { |number| LotoNumber.new(loto:, is_bonus: false, number:) }
           numbers.push(LotoNumber.new(loto:, is_bonus: true, number: bounus_number(row)))
           prizes = []
