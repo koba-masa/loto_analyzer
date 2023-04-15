@@ -21,8 +21,8 @@ RSpec.describe Loto6RegistrationJob, type: :scraping do
 
     it 'ロト、ロトナンバーが登録されること' do
       expect { instance.perform }.to \
-        change { Loto.all.size }.and \
-          change { LotoNumber.all.size }
+        change(Loto.all, :size).and \
+          change(LotoNumber.all, :size)
     end
   end
 end
