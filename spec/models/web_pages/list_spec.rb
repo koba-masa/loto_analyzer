@@ -22,7 +22,7 @@ module WebPages
         subject
         expect(instance.loto6).to include(
           'http://web/retail/takarakuji/check/loto/loto6/index.html?year=2023&month=1',
-          'http://web/loto6/backnumber/loto60081.html'
+          'http://web/loto6/backnumber/loto60081.html',
         )
       end
     end
