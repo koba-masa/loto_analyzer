@@ -14,7 +14,7 @@ module WebPages
 
       def parse
         (0..(results_count - 1)).map do |i|
-          loto = Loto.new(kind: :loto6, times: times(i), lottery_date: lottery_date(i))
+          loto = Loto.new(kind: Loto.kinds[:loto6], times: times(i), lottery_date: lottery_date(i))
           numbers = numbers(i).map { |number| LotoNumber.new(loto:, is_bonus: false, number:) }
           numbers.push(LotoNumber.new(loto:, is_bonus: true, number: bounus_number(i)))
           prizes = []
