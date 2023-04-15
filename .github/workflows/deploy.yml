@@ -1,16 +1,21 @@
 name: deploy
 
 on:
-  push:
+  workflow_run:
+    workflows:
+      - ci
+    types:
+      - completed
     branches:
       - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
-      - name: deploy
+      - name: Deploy
         run: |
           ssh_identifier="identifier"
           echo "${{ secrets.DEPLOY_SERVER_IDENTIFIER }}" > ${ssh_identifier}

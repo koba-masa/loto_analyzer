@@ -21,7 +21,7 @@ class WebPage
       client.read_timeout = 180
       @driver = Selenium::WebDriver.for(
         :remote,
-        url: 'http://selenium_server:4444',
+        url: "http://#{ENV.fetch('TEST_SELENIUM_SERVER', nil)}:4444",
         capabilities: [options],
         http_client: client,
       )
