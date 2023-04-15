@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 module WebPages
-  RSpec.describe List do
+  RSpec.describe List, type: :scraping do
     let(:instance) { described_class.new(url) }
     let(:url) { "http://#{ENV.fetch('TEST_WEB_SERVER', nil)}/loto/backnumber/index.html" }
 

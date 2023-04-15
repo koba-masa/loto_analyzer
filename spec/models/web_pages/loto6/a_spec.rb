@@ -4,7 +4,7 @@ require 'rails_helper'
 
 module WebPages
   module Loto6
-    RSpec.describe A do
+    RSpec.describe A, type: :scraping do
       let(:instance_single) { described_class.new(url_single) }
       let(:instance_multiple) { described_class.new(url_multiple) }
       let(:url_single) { "http://#{ENV.fetch('TEST_WEB_SERVER', nil)}/loto6/index_single.html" }

@@ -4,7 +4,7 @@ require 'rails_helper'
 
 module WebPages
   module Loto6
-    RSpec.describe B do
+    RSpec.describe B, type: :scraping do
       let(:instance) { described_class.new(url) }
       let(:url) { "http://#{ENV.fetch('TEST_WEB_SERVER', nil)}/loto6/backnumber/loto60001.html" }
       let(:expected_numbers) { [2, 8, 10, 13, 27, 30, 39] }

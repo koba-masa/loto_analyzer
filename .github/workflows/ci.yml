@@ -59,8 +59,8 @@ jobs:
           bundle exec rails db:create
           bundle exec rails db:migrate
 
-      # - name: Run RSpec
-      #   run: bundle exec rspec
+      - name: Run RSpec
+        run: bundle exec rspec --tag ~type:scraping
 
       - name: Run RuboCop
         run: bundle exec rubocop
