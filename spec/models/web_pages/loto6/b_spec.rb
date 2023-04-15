@@ -25,7 +25,7 @@ module WebPages
             expect(result.loto.times).to eq 1
             expect(result.loto.lottery_date).to eq Date.new(2000, 10, 5)
             expect(result.numbers.map(&:number)).to match_array(expected_numbers)
-            expect(result.prizes).to be_nil
+            expect(result.prizes).to eq []
           end
         end
       end
