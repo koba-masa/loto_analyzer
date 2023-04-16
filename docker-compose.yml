@@ -15,7 +15,8 @@ services:
     volumes:
       - .:/app
       - app_bundle:/usr/local/bundle
-    entrypoint: sh ./docker_files/entrypoint.sh
+    tty: true
+    stdin_open: true
     ports:
       - 3000:3000
     depends_on:
