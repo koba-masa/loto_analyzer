@@ -1,0 +1,6 @@
+:scheduler:
+  :schedule:
+    loto6:
+      cron: '0 0 0 * * 5'
+      class: Loto6RegistrationJob
+      enabled: true
