@@ -6,7 +6,6 @@ services:
       context: .
       dockerfile: ./docker_files/ruby
     environment:
-      RAILS_ENV: development
       APP_DATABASE_HOST: db
       APP_DATABASE_USERNAME: postgres
       APP_DATABASE_PASSWORD: postgres123
@@ -16,7 +15,8 @@ services:
     volumes:
       - .:/app
       - app_bundle:/usr/local/bundle
-    entrypoint: sh ./docker_files/entrypoint.sh
+    tty: true
+    stdin_open: true
     ports:
       - 3000:3000
     depends_on:

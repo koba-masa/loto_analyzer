@@ -18,6 +18,8 @@ class Loto6RegistrationJob < ApplicationJob
     results.concat(page_parse(WebPages::Loto6::B, b_urls))
 
     results.each do |result|
+      next if Loto.exists?(kind: result.loto.kind, times: result.loto.times)
+
       result.loto.save!
       result.numbers.each(&:save!)
       result.prizes.each(&:save!)
@@ -28,6 +30,7 @@ class Loto6RegistrationJob < ApplicationJob
 
   def page_parse(page_class, urls)
     urls.map do |url|
+      sleep Settings.jobs.loto6_registration_job.sleep
       page_class.new(url).parse
     rescue StandardError => e
       logger.error e.message.to_s

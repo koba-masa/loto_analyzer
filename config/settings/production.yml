@@ -6,3 +6,6 @@ loto:
   loto6:
     latest: https://www.mizuhobank.co.jp/retail/takarakuji/check/loto/loto6/index.html
     back_number: https://www.mizuhobank.co.jp/retail/takarakuji/check/loto/backnumber/index.html
+jobs:
+  loto6_registration_job:
+    sleep: 2
