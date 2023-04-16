@@ -28,6 +28,7 @@ class Loto6RegistrationJob < ApplicationJob
 
   def page_parse(page_class, urls)
     urls.map do |url|
+      sleep Settings.jobs.loto6_registration_job.sleep
       page_class.new(url).parse
     rescue StandardError => e
       logger.error e.message.to_s
