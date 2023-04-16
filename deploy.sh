@@ -5,3 +5,9 @@ cd ${BASE_DIR}
 
 git fetch
 git pull
+
+bundle install --without test development
+bundle exec rails db:migrate RAILS_ENV=production
+
+# TODO: ユニットファイル化したい
+bundle exec sidekiq start --environment=production &
