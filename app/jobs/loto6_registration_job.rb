@@ -18,7 +18,8 @@ class Loto6RegistrationJob < ApplicationJob
     results.concat(page_parse(WebPages::Loto6::B, b_urls))
 
     results.each do |result|
-      next if Loto.where(kind: result.loto.kind, times: result.loto.times).exists?
+      next if Loto.exists?(kind: result.loto.kind, times: result.loto.times)
+
       result.loto.save!
       result.numbers.each(&:save!)
       result.prizes.each(&:save!)
