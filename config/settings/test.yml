@@ -1,5 +1,5 @@
 redis:
-  host: <%= ENV.fetch('TEST_REDIS_SERVER', nil) =>
+  host: <%= ENV.fetch('TEST_REDIS_SERVER', nil) %>
   port: 6379
   db_index: 1
 loto:
