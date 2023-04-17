@@ -3,6 +3,8 @@
 BASE_DIR=$(cd $(dirname $0); pwd)
 cd ${BASE_DIR}
 
+source ~/.bash_profile
+
 git fetch
 git pull
 
