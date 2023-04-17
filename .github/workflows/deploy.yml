@@ -24,5 +24,5 @@ jobs:
               -p ${{ secrets.DEPLOY_SERVER_PORT }} \
               -i ${ssh_identifier} \
               -o StrictHostKeyChecking=no \
-              bash ${{ secrets.DEPLOY_SHELL_PATH }}/deploy.sh
+              bash ${{ secrets.DEPLOY_SHELL_PATH }}/deploy.sh &
           rm ${ssh_identifier}
