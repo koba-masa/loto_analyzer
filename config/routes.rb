@@ -13,8 +13,6 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   Rails.application.routes.draw do
-    unless Rails.env.production?
-      mount Sidekiq::Web, at: '/sidekiq'
-    end
+    mount Sidekiq::Web, at: '/sidekiq'
   end
 end
