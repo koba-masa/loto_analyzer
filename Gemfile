@@ -52,6 +52,7 @@ gem 'bootsnap', require: false
 
 gem 'config', '~> 4.1'
 gem 'redis'
+gem 'sd_notify'
 gem 'selenium-webdriver', '~> 4.0.0.beta1'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
