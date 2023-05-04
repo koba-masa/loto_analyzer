@@ -15,7 +15,7 @@ services:
     volumes:
       - .:/app
       - app_bundle:/usr/local/bundle
-    command: "bundle exec pumactl start -F config/puma/development.rb "
+    command: "bundle exec pumactl start -F config/puma/development.rb"
     tty: true
     stdin_open: true
     ports:
