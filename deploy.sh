@@ -5,6 +5,7 @@ cd ${BASE_DIR}
 
 source ~/.bash_profile
 
+git checkout main
 git fetch
 git pull
 
@@ -16,10 +17,4 @@ if [ ! -d "${SOCKET_DIR}" ]; then
   mkdir -p ${SOCKET_DIR}
 fi
 
-sudo systemctl stop nginx
-sudo systemctl stop loto_analyzer_puma.service
-sudo systemctl stop loto_analyzer_sidekiq.service
-
-sudo systemctl start loto_analyzer_sidekiq.service
-sudo systemctl start loto_analyzer_puma.service
-sudo systemctl start nginx
+bash deploy/systemctl.bash
