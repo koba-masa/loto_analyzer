@@ -16,21 +16,22 @@ class WebPage
   def driver
     return @driver if @driver.present?
 
-    if Rails.env.production?
-      @driver = Selenium::WebDriver.for(
-        :chrome,
-        options:,
-      )
-    else
-      client = Selenium::WebDriver::Remote::Http::Default.new
-      client.read_timeout = 180
-      @driver = Selenium::WebDriver.for(
-        :remote,
-        url: "http://#{ENV.fetch('TEST_SELENIUM_SERVER', nil)}:4444",
-        capabilities: [options],
-        http_client: client,
-      )
-    end
+    client = Selenium::WebDriver::Remote::Http::Default.new
+    client.read_timeout = 180
+    @driver = if Rails.env.production?
+                Selenium::WebDriver.for(
+                  :chrome,
+                  capabilities: [options],
+                  http_client: client,
+                )
+              else
+                Selenium::WebDriver.for(
+                  :remote,
+                  url: "http://#{ENV.fetch('TEST_SELENIUM_SERVER', nil)}:4444",
+                  capabilities: [options],
+                  http_client: client,
+                )
+              end
     @driver.manage.timeouts.implicit_wait = 10
     @driver
   end
