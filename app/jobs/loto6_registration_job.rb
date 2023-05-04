@@ -2,6 +2,7 @@
 
 class Loto6RegistrationJob < ApplicationJob
   queue_as :default
+  sidekiq_options retry: false
 
   def perform
     results = []

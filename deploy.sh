@@ -11,7 +11,6 @@ git pull
 bundle install --without test development
 bundle exec rails db:migrate RAILS_ENV=production
 
-
 SOCKET_DIR=tmp/sockets
 if [ ! -d "${SOCKET_DIR}" ]; then
   mkdir -p ${SOCKET_DIR}
