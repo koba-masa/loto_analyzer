@@ -5,5 +5,7 @@
 ## ジョブの手動実行
 ### Loto6
 ```sh
+bundle exec rails runner "::Loto6::LatestRegistrationJob.perform_now"
 bundle exec rails runner "::Loto6::LatestRegistrationJob.perform_now(<URL>)"
+bundle exec rails runner "::Loto6::AllRegistrationJob.perform_now"
 ```
