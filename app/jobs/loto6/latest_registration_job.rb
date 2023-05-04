@@ -5,10 +5,10 @@ module Loto6
     queue_as :default
     sidekiq_options retry: false
 
-    def perform
+    def perform(url = Settings.loto.loto6.latest)
       results = []
 
-      results.concat(page_parse(WebPages::Loto6::A, [Settings.loto.loto6.latest]))
+      results.concat(WebPages::Loto6::A.new(url).parse)
 
       results.each do |result|
         next if Loto.exists?(kind: result.loto.kind, times: result.loto.times)
@@ -17,18 +17,6 @@ module Loto6
         result.numbers.each(&:save!)
         result.prizes.each(&:save!)
       end
-    end
-
-    private
-
-    def page_parse(page_class, urls)
-      urls.map do |url|
-        sleep Settings.jobs.loto6_registration_job.sleep
-        page_class.new(url).parse
-      rescue StandardError => e
-        logger.error e.message.to_s
-        logger.info e.backtrace.join("\n").to_s
-      end.flatten
     end
   end
 end
