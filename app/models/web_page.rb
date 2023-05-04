@@ -17,7 +17,10 @@ class WebPage
     return @driver if @driver.present?
 
     if Rails.env.production?
-      @driver = Selenium::WebDriver.for :chrome
+      @driver = Selenium::WebDriver.for(
+        :chrome,
+        options:,
+      )
     else
       client = Selenium::WebDriver::Remote::Http::Default.new
       client.read_timeout = 180
@@ -36,6 +39,7 @@ class WebPage
     return @options if @options.present?
 
     @options = Selenium::WebDriver::Options.chrome
+    @options.add_argument('--headless')
     @options
   end
 

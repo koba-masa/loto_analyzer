@@ -1,6 +1,9 @@
 :scheduler:
   :schedule:
-    loto6:
+    loto6_latest:
       cron: '0 0 0 * * 5'
-      class: Loto6RegistrationJob
-      enabled: true
+      class: Loto6::LatestRegistrationJob
+      enabled: <%= ENV.fetch('RAILS_ENV', 'development') == 'production' %>
+    loto6_all:
+      class: Loto6::AllRegistrationJob
+      enabled: false
