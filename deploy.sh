@@ -17,4 +17,4 @@ if [ ! -d "${SOCKET_DIR}" ]; then
   mkdir -p ${SOCKET_DIR}
 fi
 
-bash deploy/systemctl.bash
+bash deploy/systemctl.sh
