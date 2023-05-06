@@ -9,8 +9,7 @@ git checkout main
 git fetch
 git pull
 
-bundle install --without test development
-bundle exec rails db:migrate RAILS_ENV=production
+bash deploy/setup.sh
 
 SOCKET_DIR=tmp/sockets
 if [ ! -d "${SOCKET_DIR}" ]; then
