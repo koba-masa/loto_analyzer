@@ -5,7 +5,10 @@ redis:
 loto:
   loto6:
     latest: http://<%= ENV.fetch('TEST_WEB_SERVER', nil) %>/loto/loto6/index_multiple.html
-    back_number: "http://<%= ENV.fetch('TEST_WEB_SERVER', nil) %>/loto/backnumber/index.html"
+    back_number: http://<%= ENV.fetch('TEST_WEB_SERVER', nil) %>/loto/backnumber/index.html
+discord:
+  notification:
+    webhook_url: <%= Rails.application.credentials.test[:discord][:notification][:webhook_url] %>
 jobs:
   loto6_registration_job:
     sleep: 0

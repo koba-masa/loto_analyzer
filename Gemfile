@@ -51,6 +51,7 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 gem 'config', '~> 4.1'
+gem 'discordrb-webhooks', '~> 3.3'
 gem 'redis'
 gem 'sd_notify'
 gem 'selenium-webdriver', '~> 4.0.0.beta1'
