@@ -12,6 +12,7 @@ services:
       TEST_SELENIUM_SERVER: selenium_server
       TEST_WEB_SERVER: web
       TEST_REDIS_SERVER: redis
+      RAILS_RELATIVE_URL_ROOT: /loto_analyzer
     volumes:
       - .:/app
       - app_bundle:/usr/local/bundle
