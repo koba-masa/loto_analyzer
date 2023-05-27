@@ -9,4 +9,6 @@ class Loto < ApplicationRecord
   validates :kind, presence: true, inclusion: { in: Loto.kinds.values }, uniqueness: { scope: [:times] }
   validates :times, presence: true
   validates :lottery_date, presence: true
+
+  default_scope { order(times: :asc) }
 end
