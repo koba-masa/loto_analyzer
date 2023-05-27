@@ -39,5 +39,7 @@ module App
     config.generators.system_tests = nil
 
     config.active_job.queue_adapter = :sidekiq
+
+    config.relative_url_root = ENV.fetch('RAILS_RELATIVE_URL_ROOT', '/')
   end
 end
