@@ -12,3 +12,5 @@ discord:
 jobs:
   loto6_registration_job:
     sleep: 2
+  loto_result_creation_job:
+    path: tmp/cache/files/loto/result
