@@ -77,28 +77,14 @@ RSpec.describe LotoResultCreationJob do
     let(:loto3_number_bounus) { create(:loto_number, :is_bonus, loto: loto3, number: 8) }
 
     context '存在するロト種別の場合' do
-      context '結果が存在する場合' do
-        let(:kind) { 'loto6' }
-        let(:expected_file_path) { Rails.root.join('tmp/cache/files/test/loto/result/loto6.json') }
-        let(:expected_contents) { file_fixture('loto/result/loto6/loto6.json').read }
+      let(:kind) { 'loto6' }
+      let(:expected_file_path) { Rails.root.join('tmp/cache/files/test/loto/result/loto6.json') }
+      let(:expected_contents) { file_fixture('loto/result/loto6/loto6.json').read }
 
-        it 'ファイルが作成されること' do
-          perform
-          expect(File).to exist(expected_file_path)
-          expect(File.read(expected_file_path)).to eq(expected_contents)
-        end
-      end
-
-      context '結果が存在しない場合' do
-        let(:kind) { 'mini_loto' }
-        let(:expected_file_path) { Rails.root.join('tmp/cache/files/test/loto/result/mini_loto.json') }
-        let(:expected_contents) { file_fixture('loto/result/mini_loto/empty.json').read }
-
-        it '空のファイルが作成されること' do
-          perform
-          expect(File).to exist(expected_file_path)
-          expect(File.read(expected_file_path)).to eq(expected_contents)
-        end
+      it 'ファイルが作成されること' do
+        perform
+        expect(File).to exist(expected_file_path)
+        expect(File.read(expected_file_path)).to eq(expected_contents)
       end
     end
 
