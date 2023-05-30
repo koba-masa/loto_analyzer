@@ -18,7 +18,7 @@ module Results
       private
 
       def lotos
-        @lotos ||= Loto.where(kind: Loto.kinds[@kind]).order(times: 'ASC').includes(:loto_numbers)
+        @lotos ||= ::Loto.where(kind: ::Loto.kinds[@kind]).order(times: 'ASC').includes(:loto_numbers)
       end
 
       def to_json(lotos)
@@ -35,11 +35,11 @@ module Results
       end
 
       def directory_path
-        Settings.jobs.loto_result_creation_job.path
+        "#{Settings.jobs.loto_result_creation_job.path}/#{@kind}"
       end
 
       def file_path
-        "#{directory_path}/#{@kind}.json"
+        "#{directory_path}/winning_result.json"
       end
     end
   end
