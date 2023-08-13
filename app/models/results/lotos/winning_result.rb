@@ -2,11 +2,7 @@
 
 module Results
   module Lotos
-    class WinningResult
-      def initialize(kind)
-        @kind = kind
-      end
-
+    class WinningResult < Loto
       def create
         processed_lotos = to_json(lotos)
 
@@ -32,10 +28,6 @@ module Results
             }
           end,
         }.to_json
-      end
-
-      def directory_path
-        "#{Settings.jobs.loto_result_creation_job.path}/#{@kind}"
       end
 
       def file_path

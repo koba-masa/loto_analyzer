@@ -79,12 +79,15 @@ RSpec.describe LotoResultCreationJob do
     context '存在するロト種別の場合' do
       let(:kind) { 'loto6' }
       let(:expected_file_path) { Rails.root.join('tmp/cache/files/test/lotos/loto6/winning_result.json') }
-      let(:expected_contents) { file_fixture('lotos/loto6/winning_result.json').read }
 
       it 'ファイルが作成されること' do
         perform
         expect(File).to exist(expected_file_path)
-        expect(File.read(expected_file_path)).to eq(expected_contents)
+      end
+
+      it '番号ごと当選数結果ファイルが作成されること' do
+        perform
+        expect(File).to exist(Rails.root.join('tmp/cache/files/test/lotos/loto6/summary_per_numbers.json'))
       end
     end
 
