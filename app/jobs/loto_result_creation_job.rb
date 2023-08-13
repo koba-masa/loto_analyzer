@@ -10,5 +10,6 @@ class LotoResultCreationJob < ApplicationJob
     # TODO: Discordに通知する処理を実装する
 
     ::Results::Lotos::WinningResult.new(kind).create
+    ::Results::Lotos::SummaryPerNumber.new(kind).create
   end
 end
